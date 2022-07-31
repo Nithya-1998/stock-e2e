@@ -1,0 +1,29 @@
+[{
+  "_id": {
+    "$oid": "62e050f5ec5421a8854b2bb0"
+  },
+  "firstName": "Nithya",
+  "lastName": "T",
+  "emailId": "testuser@gmail.com",
+  "phoneNumber": "7094823457",
+  "dateOfBirth": "06/01/1998",
+  "password": "Test@123",
+  "role": "ADMIN",
+  "isLoggedIn": true,
+  "age": 24,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "62e05a152d2909f8264ff75a"
+  },
+  "firstName": "Rosh",
+  "lastName": "G",
+  "emailId": "testuser2@gmail.com",
+  "phoneNumber": "7094023457",
+  "dateOfBirth": "14/07/1997",
+  "password": "Test@123",
+  "role": "USER",
+  "isLoggedIn": true,
+  "age": 24,
+  "__v": 0
+}]

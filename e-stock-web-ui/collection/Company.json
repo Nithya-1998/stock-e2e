@@ -1,0 +1,55 @@
+[{
+  "_id": {
+    "$oid": "62e056e01ed928c764b21d5b"
+  },
+  "companyCode": "NTS01",
+  "companyName": "NTS",
+  "date": {
+    "$date": {
+      "$numberLong": "1658869472015"
+    }
+  },
+  "logo": "hkhkh",
+  "stockPrice": "50.78",
+  "emailId": "testuser@gmail.com",
+  "stockExchange": "NSE",
+  "companyCEO": "Nithya",
+  "companyWebSite": "jjh",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "62e05aa61ed928c764b21d5d"
+  },
+  "companyCode": "RTS01",
+  "companyName": "RTS",
+  "date": {
+    "$date": {
+      "$numberLong": "1658870438220"
+    }
+  },
+  "logo": "xyz",
+  "stockPrice": "90.78",
+  "emailId": "testuser2@gmail.com",
+  "stockExchange": "BSE",
+  "companyCEO": "Roshini",
+  "companyWebSite": "iiyh",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "62e05b291ed928c764b21d60"
+  },
+  "companyCode": "RTS01",
+  "companyName": "RTS",
+  "date": {
+    "$date": {
+      "$numberLong": "1658870569748"
+    }
+  },
+  "logo": "xyz",
+  "stockPrice": "99.78",
+  "emailId": "testuser2@gmail.com",
+  "stockExchange": "BSE",
+  "companyCEO": "Roshini",
+  "companyWebSite": "iiyh",
+  "__v": 0
+}]
