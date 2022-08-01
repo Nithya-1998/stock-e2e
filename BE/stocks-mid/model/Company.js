@@ -1,0 +1,47 @@
+const mongoose = require('mongoose');
+
+const Company = mongoose.Schema({
+    companyCode:{
+        type: String,
+        required: true
+    } ,
+    companyName: {
+        type: String,
+        required: true
+    } ,
+    date: {
+        type: Date,
+        default: Date.UTC
+    },
+    logo: {
+        type: String,
+        required: true
+    },
+    stockPriceHigh: {
+        type: String,
+        required: true
+    },
+    stockPriceLow: {
+        type: String,
+        required: true
+    },
+    emailId: {
+        type: String,
+        required: true
+    },
+    stockExchange: {
+        type: String,
+        required: true
+    },
+    companyCEO: {
+        type: String,
+        required: true
+    },
+    companyWebSite:{
+        type: String,
+        required: true
+    }
+
+});
+
+module.exports = mongoose.model('Company', Company, 'Company');

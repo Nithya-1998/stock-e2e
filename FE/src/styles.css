@@ -1,0 +1,147 @@
+/* You can add global styles to this file, and also import other style files */
+.navbar{
+  background-color: #110000;
+}
+.material-icons{
+  vertical-align : middle;
+}
+.opacity{
+  opacity : 0.9;
+}
+.jumbotron{
+  background-image : url("https://images.unsplash.com/photo-1498887960847-2a5e46312788?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60");
+  background-size : 75%;
+}
+/* .card:hover{
+  transform:scale(1.2);
+} */
+
+
+html, body {
+  height: 100%;
+}
+
+/* body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; padding: 30px; }
+
+.example-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+} */
+
+
+/* .w-sidebar {
+  width: 200px;
+  max-width: 200px;
+  top: 0;
+  z-index: 1060;
+}
+
+.row.collapse {
+  margin-left: -200px;
+  left: 0;
+  transition: margin-left .15s linear;
+}
+
+.row.collapse.show {
+  margin-left: 0 !important;
+}
+
+.row.collapsing {
+  margin-left: -200px;
+  left: -0.05%;
+  transition: all .15s linear;
+}
+
+@media (max-width:768px) {
+
+  .row.collapse,
+  .row.collapsing {
+      margin-left: 0 !important;
+      left: 0 !important;
+      overflow: visible;
+  }
+
+  .row > .sidebar.collapse {
+      display: flex !important;
+      margin-left: -100% !important;
+      transition: all .3s linear;
+      position: fixed;
+      z-index: 1050;
+      max-width: 0;
+      min-width: 0;
+      flex-basis: auto;
+  }
+
+  .row > .sidebar.collapse.show {
+      margin-left: 0 !important;
+      width: 100%;
+      max-width: 100%;
+      min-width: initial;
+  }
+
+  .row > .sidebar.collapsing {
+      display: flex !important;
+      margin-left: -10% !important;
+      transition: all .3s linear !important;
+      position: fixed;
+      z-index: 1050;
+      min-width: initial;
+  }
+
+}
+.icon-button {
+  --button-size: calc(var(--nav-size) * 0.5);
+  width: 50px;
+  height:50px;
+  background-color: white;
+  color: black;
+  border-radius: 50%;
+  padding: 5px;
+  margin: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: filter 300ms;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  monospace;
+}
+.icon-friend-button {
+  --button-size: calc(var(--nav-size) * 0.5);
+  width: 35px;
+  height:50px;
+  background-color: rgb(158, 214, 226);
+  color: black;
+  border-radius: 50%;
+  padding: 5px;
+  margin: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: filter 300ms;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  monospace;
+}
+.icon-button:hover {
+  filter: brightness(1.2);
+  text-decoration:none ;
+}
+.site{
+  padding: 5px;
+  margin: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: filter 300ms;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  monospace;
+}
+.site:hover{
+  filter: brightness(1.2);
+  text-decoration:none ;
+} */
+
+
+

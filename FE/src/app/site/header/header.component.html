@@ -1,0 +1,108 @@
+<!-- <div>
+  <div class="container-fluid fixed-top postion-fixed bg-dark py-3">
+    <div class="row collapse show no-gutters d-flex h-100 position-relative">
+      <div
+        class="col-3 px-0 w-sidebar navbar-collapse collapse d-none d-md-flex"
+      ></div>
+      <div class="col px-3 px-md-0">
+        <a
+          data-toggle="collapse"
+          href=""
+          data-target=".collapse"
+          role="button"
+          class="text-white p-1 text-decoration-none"
+        >
+          <i class="material-icons">menu</i>Swing
+        </a>
+      </div>
+    </div>
+  </div>
+  <div
+    class="container-fluid px-0"
+    data-toggle="collapse"
+    data-target=".collapse"
+  >
+    <div class="row collapse show no-gutters d-flex h-100 position-relative">
+      <div
+        class="col-3 p-0 h-100 w-sidebar navbar-collapse collapse d-none d-md-flex sidebar"
+      >
+        <div
+          class="navbar-dark bg-dark text-white position-fixed h-100 align-self-start w-sidebar"
+        >
+          <h6 class="px-3 pt-3">
+            <b class="text-light mr-auto ml-2" *ngIf="status">
+
+              <h3 class="icon-button text-dark btn-white font-weight-bold">
+                <b>{{ name }}</b>
+              </h3>
+            </b>
+
+            <a
+              data-toggle="collapse"
+              class="px-1 d-inline d-md-none text-white"
+              href="#"
+              data-target=".collapse"
+            >
+            </a>
+          </h6> -->
+<h3 class="text-light ml-2 pt-3 mr-auto" *ngIf="!status">Hi, {{ name }}</h3>
+<h3 class="text-light ml-2 pt-3 mr-auto" *ngIf="status">Hi {{ username }},</h3>
+<ul class="nav flex-column flex-nowrap text-truncate">
+  <li class="nav-item" *ngIf="!status">
+    <a class="nav-link" routerLink="login">
+      <div class="btn-group">
+        <button type="button" class="btn btn-dark font-weight-bold">
+          Login
+        </button>
+      </div>
+    </a>
+  </li>
+  <li class="nav-item" *ngIf="!status">
+    <a class="nav-link" routerLink="signup">
+      <div class="btn-group">
+        <button type="button" class="btn btn-dark font-weight-bold">
+          SignUp
+        </button>
+      </div>
+    </a>
+  </li>
+
+  <li class="nav-item" *ngIf="status">
+    <a class="nav-link" routerLink="/company">
+      <div class="btn-group">
+        <button type="button" class="btn btn-dark font-weight-bold">
+          View others
+        </button>
+      </div>
+    </a>
+  </li>
+
+  <li class="nav-item" *ngIf="status">
+    <a class="nav-link" routerLink="/company">
+      <div class="btn-group">
+        <button type="button" class="btn btn-dark font-weight-bold">
+          My Companies
+        </button>
+      </div>
+    </a>
+  </li>
+  <li class="nav-item" *ngIf="status">
+    <a class="nav-link" routerLink="/">
+      <div class="btn-group">
+        <button
+          type="button"
+          (click)="onLogOut()"
+          class="btn btn-dark font-weight-bold"
+        >
+          Logout
+        </button>
+      </div>
+    </a>
+  </li>
+</ul>
+
+<!--  </div>
+      </div>
+    </div>
+  </div>
+</div> -->

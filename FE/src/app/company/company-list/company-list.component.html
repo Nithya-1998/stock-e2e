@@ -1,0 +1,60 @@
+<!-- <div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-12 col-md-6 col-lg-3"
+        *ngFor="let company of companyList">
+        <app-company-info [company]="company" [companyId]="companyId">
+        </app-company-info>
+      </div>
+    </div>
+  </div>
+</div> -->
+<!--The content below is only a placeholder and can be replaced.-->
+
+<div class="container">
+
+  <div>
+    <h4 class="text-info mt-3">Company Stocks
+      <button
+        type="button"
+        class="btn btn-dark float-right mt-1"
+        (click)="exportExcel()"
+      >
+        Export
+      </button>
+    </h4>
+    <table
+      className="table table-responsive table-striped table-fixed w-auto h-auto table-dark"
+    >
+      <thead>
+        <tr>
+          <th>Co. Code</th>
+          <th>Co. Name</th>
+          <th>Stock Exc</th>
+          <th>Today's High</th>
+          <th>Today's Low</th>
+          <!-- <th>Stock Price(Today's Low)</th> -->
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="
+            let company of companyList
+              | paginate: { itemsPerPage: count, currentPage: p }
+          "
+        >
+          <td>{{ company.companyCode }}</td>
+          <td>{{ company.companyName }}</td>
+          <td>{{ company.stockExchange }}</td>
+          <td>{{ company.stockPriceHigh }}</td>
+          <td>{{ company.stockPriceLow }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!--Including the pagination control.-->
+  <div class="text-right">
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  </div>
+</div>

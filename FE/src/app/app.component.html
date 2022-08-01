@@ -1,0 +1,16 @@
+<nav class="navbar opacity navbar-dark">
+   <button
+    class="navbar-toggler slideOpenClose"
+    type="button"
+    (click)="toggleMenuOpen()"
+  >
+  <i class="material-icons" *ngIf="!open">keyboard_double_arrow_left</i>
+  <i class="material-icons" *ngIf="open">keyboard_double_arrow_right</i>
+  </button>
+  <h3 class="text-light mr-auto ml-2">Swing</h3>
+
+</nav>
+
+<app-header [@slideInOut]="menuState"></app-header>
+<router-outlet></router-outlet>
+
