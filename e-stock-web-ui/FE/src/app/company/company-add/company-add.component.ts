@@ -91,6 +91,12 @@ export class CompanyAddComponent implements OnInit {
     });
   }
   onSubmit(editForm: any) {
+    if(parseFloat(this.editForm.value.stockPriceLow) >  parseFloat(this.editForm.value.currentStockPrice)) {
+      this.editForm.value.stockPriceLow = this.editForm.value.currentStockPrice;
+    }
+    if(parseFloat(this.editForm.value.stockPriceHigh) <  parseFloat(this.editForm.value.currentStockPrice)) {
+      this.editForm.value.stockPriceHigh = this.editForm.value.currentStockPrice;
+    }
     this.companyService.updateCompany(this.editForm.value).subscribe((res) => {
       console.log(res);
       this.router.navigate(['/company']);
