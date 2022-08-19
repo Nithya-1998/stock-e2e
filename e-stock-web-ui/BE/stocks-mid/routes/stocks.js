@@ -16,11 +16,33 @@ Router.post("/getCompanyStocks", async (req, res, next) => {
         companies.push(company);
       });
       console.log(companies);
-      res.status(200).json({ companies: companies });
+      res.status(200).json(companies);
     }
   } catch (error) {
     next(error);
     res.status(500).json({ err: error });
+  }
+});
+
+Router.get("/getCompany/:companyCode", async (req, res, next) => {
+  try {
+    if (req.params != null && req.params != undefined) {
+      console.log(req.params.companyCode);
+      let companies = [];
+      const query = Company.findOne(
+        { companyCode: req.params.companyCode },
+        null,
+        (err, company) => {
+          if (err) {
+            console.log(err);
+          }
+          console.log("Find one: " + company);
+          res.status(200).json({ data: company });
+        }
+      );
+    }
+  } catch (error) {
+    console.log(error);
   }
 });
 
@@ -57,7 +79,15 @@ Router.post("/getCompanyStocks", async (req, res, next) => {
  *                    format: date-time
  *                  logo:
  *                    type: string
- *                  stockPrice:
+ *                  stockPriceHigh:
+ *                    type: string
+ *                  stockPriceLow:
+ *                    type: string
+ *                  currentStockPrice:
+ *                    type: string
+ *                  volume:
+ *                    type: string
+ *                  marketcap:
  *                    type: string
  *                  emailId:
  *                    type: string
@@ -81,8 +111,7 @@ Router.post("/getAllCompanyStocks", async (req, res, next) => {
     ).forEach((company) => {
       companies.push(company);
     });
-    console.log(companies);
-    res.status(200).json({ companies: companies });
+    res.status(200).json(companies);
   } catch (error) {
     next(error);
     res.status(500).json({ err: error });
@@ -112,7 +141,11 @@ Router.post("/getAllCompanyStocks", async (req, res, next) => {
  *                    format: date-time
  *                  logo:
  *                    type: string
- *                  stockPrice:
+ *                  stockPriceHigh:
+ *                    type: string
+ *                  stockPriceLow:
+ *                    type: string
+ *                  currentStockPrice:
  *                    type: string
  *                  emailId:
  *                    type: string
@@ -121,6 +154,10 @@ Router.post("/getAllCompanyStocks", async (req, res, next) => {
  *                  companyWebSite:
  *                    type: string
  *                  stockExchange:
+ *                    type: string
+ *                  volume:
+ *                    type: string
+ *                  marketcap:
  *                    type: string
  *     responses:
  *       200:
@@ -141,7 +178,11 @@ Router.post("/getAllCompanyStocks", async (req, res, next) => {
  *                    format: date-time
  *                  logo:
  *                    type: string
- *                  stockPrice:
+ *                  stockPriceHigh:
+ *                    type: string
+ *                  stockPriceLow:
+ *                    type: string
+ *                  currentStockPrice:
  *                    type: string
  *                  emailId:
  *                    type: string
@@ -150,6 +191,10 @@ Router.post("/getAllCompanyStocks", async (req, res, next) => {
  *                  companyWebSite:
  *                    type: string
  *                  stockExchange:
+ *                    type: string
+ *                  volume:
+ *                    type: string
+ *                  marketcap:
  *                    type: string
  *       403
  *         description: Unauthorized/ForBidden
@@ -164,7 +209,7 @@ Router.post("/addCompany", async (req, res, next) => {
              producer(req.body.stockPrice).catch((err) => {
                  console.error("error in producer: ", err)
              }) */
-      const post = new Company({
+      const update = {
         companyCode: req.body.companyCode,
         companyName: req.body.companyName,
         date:
@@ -173,14 +218,22 @@ Router.post("/addCompany", async (req, res, next) => {
           req.body.date == undefined
             ? Date.now()
             : req.body.date,
-        stockPrice: req.body.stockPrice,
+        stockPriceHigh: req.body.stockPriceHigh,
+        stockPriceLow: req.body.stockPriceLow,
+        currentStockPrice: req.body.currentStockPrice,
         logo: req.body.logo,
         emailId: req.body.emailId,
         companyCEO: req.body.companyCEO,
         stockExchange: req.body.stockExchange,
-        companyWebSite: req.body.companyWebSite
+        companyWebSite: req.body.companyWebSite,
+        volume: req.body.volume,
+        marketcap: req.body.marketcap,
+      };
+      const filter = { companyCode: req.body.companyCode };
+      let doc = await Company.findOneAndUpdate(filter, update, {
+        new: true,
+        upsert: true
       });
-      post.save();
       res.send({
         message: "Post stocks of the company",
       });
@@ -192,7 +245,7 @@ Router.post("/addCompany", async (req, res, next) => {
 
 /**
  * @openapi
- * '/stocks/deleteCompany':
+ * '/stocks/deleteCompany/{companyCode}':
  *  delete:
  *     tags:
  *     - Delete Company
@@ -213,7 +266,11 @@ Router.post("/addCompany", async (req, res, next) => {
  *                    format: date-time
  *                  logo:
  *                    type: string
- *                  stockPrice:
+ *                  stockPriceHigh:
+ *                    type: string
+ *                  stockPriceLow:
+ *                    type: string
+ *                  currentStockPrice:
  *                    type: string
  *                  emailId:
  *                    type: string
@@ -222,6 +279,10 @@ Router.post("/addCompany", async (req, res, next) => {
  *                  companyWebSite:
  *                    type: string
  *                  stockExchange:
+ *                    type: string
+ *                  volume:
+ *                    type: string
+ *                  marketcap:
  *                    type: string
  *     responses:
  *       200:
@@ -242,16 +303,11 @@ Router.post("/addCompany", async (req, res, next) => {
  *       404:
  *         description: Not Found
  */
-Router.delete("/deleteCompany", async (req, res, next) => {
+Router.delete("/deleteCompany/:companyCode", async (req, res, next) => {
   try {
-    if (req.body != null && req.body != undefined) {
-      await Company.findOneAndDelete(
-        { companyCode: req.body.companyCode },
-        function (err) {
-          if (err) console.log(err);
-          console.log("Deleted Successfully");
-        }
-      );
+    if (req.params != null && req.params != undefined) {
+      await Company.findOneAndDelete({ companyCode: req.params.companyCode });
+      console.log("Deleted Successfully");
       res.status(200).json({ message: "Deleted Successfully..." });
     }
   } catch (error) {

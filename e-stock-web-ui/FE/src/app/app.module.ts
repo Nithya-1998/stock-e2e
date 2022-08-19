@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { RouterModule, Routes } from '@angular/router';
-import { AuthGuard } from './auth/auth.guard';
+import { NgxPaginationModule } from 'ngx-pagination';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -37,8 +36,8 @@ import { MaterialExampleModule } from './material-io.module';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    MaterialExampleModule
-
+    MaterialExampleModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent, MaterialExampleModule],

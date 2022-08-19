@@ -15,7 +15,8 @@
               <label for="emailId">
                 <span>EmailId</span>
               </label>
-              <input type="text" formControlName="emailId" class="form-control" id="emailId" placeholder="Enter emailId"
+              <input type="text" formControlName="emailId" class="form-control" id="emailId"
+               placeholder="Enter emailId"
               >
               <small id="emailId" *ngIf="((f['emailId'].errors) && (f['emailId'].touched || f['emailId'].dirty))">
                 <div *ngIf="(f['emailId'].errors['required'])" class="form-text text-danger">EmailId is required</div>
@@ -35,7 +36,6 @@
               <a>
                 <button type="submit" [disabled]="loginForm.invalid" id="login" class="btn btn-danger">
                   <span class="text-light font-weight-bold" id="login">Login</span>
-                  <app-header (username)="emailId"></app-header>
                 </button>
               </a>
               <span class="float-right"> New here?

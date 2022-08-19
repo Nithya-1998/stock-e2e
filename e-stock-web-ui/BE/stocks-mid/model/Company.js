@@ -15,11 +15,15 @@ const Company = mongoose.Schema({
     },
     logo: {
         type: String,
-        required: true
+        required: false
     },
-    stockPrice: {
+    stockPriceHigh: {
         type: String,
-        required: true
+        required: false
+    },
+    stockPriceLow: {
+        type: String,
+        required: false
     },
     emailId: {
         type: String,
@@ -34,6 +38,18 @@ const Company = mongoose.Schema({
         required: true
     },
     companyWebSite:{
+        type: String,
+        required: true
+    },
+    currentStockPrice: {
+        type: String,
+        required: true
+    },
+    volume: {
+        type: String,
+        required: true
+    },
+    marketcap : {
         type: String,
         required: true
     }

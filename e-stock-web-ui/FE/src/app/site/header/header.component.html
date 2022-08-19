@@ -45,7 +45,8 @@
             >
             </a>
           </h6> -->
-<h3 class="text-light ml-2 pt-3 mr-auto" *ngIf="!status">Hi, {{name}}</h3>
+<h3 class="text-light ml-2 pt-3 mr-auto" *ngIf="!status">Hi, {{ name }}</h3>
+<h3 class="text-light ml-2 pt-3 mr-auto" *ngIf="status">Hi {{ username }},</h3>
 <ul class="nav flex-column flex-nowrap text-truncate">
   <li class="nav-item" *ngIf="!status">
     <a class="nav-link" routerLink="login">
@@ -67,6 +68,25 @@
   </li>
 
   <li class="nav-item" *ngIf="status">
+    <a class="nav-link" routerLink="/company">
+      <div class="btn-group">
+        <button type="button" class="btn btn-dark font-weight-bold">
+          View others
+        </button>
+      </div>
+    </a>
+  </li>
+
+  <li class="nav-item" *ngIf="status">
+    <a class="nav-link" routerLink="/company">
+      <div class="btn-group">
+        <button type="button" class="btn btn-dark font-weight-bold">
+          My Companies
+        </button>
+      </div>
+    </a>
+  </li>
+  <li class="nav-item" *ngIf="status">
     <a class="nav-link" routerLink="/">
       <div class="btn-group">
         <button
@@ -75,26 +95,6 @@
           class="btn btn-dark font-weight-bold"
         >
           Logout
-        </button>
-      </div>
-    </a>
-  </li>
-
-  <li class="nav-item" *ngIf="status">
-    <a class="nav-link" routerLink="signup">
-      <div class="btn-group">
-        <button type="button" class="btn btn-dark font-weight-bold">
-          View Companies
-        </button>
-      </div>
-    </a>
-  </li>
-
-  <li class="nav-item" *ngIf="status">
-    <a class="nav-link" routerLink="signup">
-      <div class="btn-group">
-        <button type="button" class="btn btn-dark font-weight-bold">
-          My Companies
         </button>
       </div>
     </a>

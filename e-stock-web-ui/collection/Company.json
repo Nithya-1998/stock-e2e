@@ -1,44 +1,30 @@
 [{
   "_id": {
-    "$oid": "62e056e01ed928c764b21d5b"
-  },
-  "companyCode": "NTS01",
-  "companyName": "NTS",
-  "date": {
-    "$date": {
-      "$numberLong": "1658869472015"
-    }
-  },
-  "logo": "hkhkh",
-  "stockPrice": "50.78",
-  "emailId": "testuser@gmail.com",
-  "stockExchange": "NSE",
-  "companyCEO": "Nithya",
-  "companyWebSite": "jjh",
-  "__v": 0
-},{
-  "_id": {
     "$oid": "62e05aa61ed928c764b21d5d"
   },
-  "companyCode": "RTS01",
+  "companyCode": "RTS11",
   "companyName": "RTS",
   "date": {
     "$date": {
-      "$numberLong": "1658870438220"
+      "$numberLong": "1660857659432"
     }
   },
   "logo": "xyz",
-  "stockPrice": "90.78",
   "emailId": "testuser2@gmail.com",
   "stockExchange": "BSE",
   "companyCEO": "Roshini",
-  "companyWebSite": "iiyh",
-  "__v": 0
+  "companyWebSite": "hcl.com",
+  "__v": 0,
+  "stockPriceHigh": "90.78",
+  "stockPriceLow": "60.34",
+  "currentStockPrice": "70.56",
+  "marketcap": "67,89,000",
+  "volume": "5678"
 },{
   "_id": {
     "$oid": "62e05b291ed928c764b21d60"
   },
-  "companyCode": "RTS01",
+  "companyCode": "RUS01",
   "companyName": "RTS",
   "date": {
     "$date": {
@@ -46,10 +32,163 @@
     }
   },
   "logo": "xyz",
-  "stockPrice": "99.78",
   "emailId": "testuser2@gmail.com",
   "stockExchange": "BSE",
   "companyCEO": "Roshini",
-  "companyWebSite": "iiyh",
+  "companyWebSite": "www.ibm.com",
+  "__v": 0,
+  "stockPriceHigh": "99.78",
+  "stockPriceLow": "60.56",
+  "currentStockPrice": "90.45",
+  "marketcap": "45,67,987",
+  "volume": "9874"
+},{
+  "_id": {
+    "$oid": "62e056e01ed928c704b20d5b"
+  },
+  "companyCode": "NTS00",
+  "companyName": "NTS",
+  "date": {
+    "$date": {
+      "$numberLong": "1658869472015"
+    }
+  },
+  "logo": "hkhkh",
+  "emailId": "testuser@gmail.com",
+  "stockExchange": "NSE",
+  "companyCEO": "Nithya",
+  "companyWebSite": "www.infosys.com",
+  "__v": 0,
+  "stockPriceHigh": "50.78",
+  "stockPriceLow": "30.45",
+  "currentStockPrice": "40.89",
+  "marketcap": "78,98,890",
+  "volume": "7896"
+},{
+  "_id": {
+    "$oid": "62e05aa61e0928c769b21d5d"
+  },
+  "companyCode": "RTS10",
+  "companyName": "RTS",
+  "date": {
+    "$date": {
+      "$numberLong": "1660857361904"
+    }
+  },
+  "logo": "xyz",
+  "emailId": "testuser@gmail.com",
+  "stockExchange": "BSE",
+  "companyCEO": "Roshini",
+  "companyWebSite": "www.ibm.com",
+  "__v": 0,
+  "stockPriceHigh": "90.78",
+  "stockPriceLow": "60.38",
+  "currentStockPrice": "80.77",
+  "marketcap": "78,98,890",
+  "volume": "7899"
+},{
+  "_id": {
+    "$oid": "62fea71f9f516feb8be82315"
+  },
+  "companyCode": "RTS11",
+  "companyName": "RTS",
+  "date": {
+    "$date": {
+      "$numberLong": "1660856095609"
+    }
+  },
+  "stockPriceHigh": "90.78",
+  "stockPriceLow": "60.34",
+  "emailId": "testuser@gmail.com",
+  "stockExchange": "BSE",
+  "companyCEO": "Roshini",
+  "companyWebSite": "www.ibm.com",
+  "currentStockPrice": "80.78",
+  "volume": "7896",
+  "marketcap": "78,98,890",
   "__v": 0
+},{
+  "_id": {
+    "$oid": "62feac5bc797142f6590c98b"
+  },
+  "companyCode": "RTT10",
+  "__v": 0,
+  "companyCEO": "Roshini",
+  "companyName": "RTT",
+  "companyWebSite": "www.ibm.com",
+  "currentStockPrice": "80.77",
+  "date": {
+    "$date": {
+      "$numberLong": "1660857435529"
+    }
+  },
+  "emailId": "testuser@gmail.com",
+  "marketcap": "78,98,890",
+  "stockExchange": "BSE",
+  "stockPriceHigh": "90.78",
+  "stockPriceLow": "60.38",
+  "volume": "7899"
+},{
+  "_id": {
+    "$oid": "62feb596c797142f6590d12e"
+  },
+  "companyCode": "ABC12",
+  "__v": 0,
+  "companyCEO": "Mayu",
+  "companyName": "ABC",
+  "companyWebSite": "abc.com",
+  "currentStockPrice": "98.67",
+  "date": {
+    "$date": {
+      "$numberLong": "1660860519751"
+    }
+  },
+  "emailId": "testuser@gmail.com",
+  "marketcap": "67,980",
+  "stockExchange": "BSE",
+  "stockPriceHigh": "99.80",
+  "stockPriceLow": "67.87",
+  "volume": "9875"
+},{
+  "_id": {
+    "$oid": "62febb6fc797142f6590d602"
+  },
+  "companyCode": "MFG10",
+  "__v": 0,
+  "companyCEO": "XYZ",
+  "companyName": "MFG",
+  "companyWebSite": "mfg.com",
+  "currentStockPrice": "50.78",
+  "date": {
+    "$date": {
+      "$numberLong": "1660861295622"
+    }
+  },
+  "emailId": "testuser2@gmail.com",
+  "marketcap": "78,909",
+  "stockExchange": "NSE",
+  "stockPriceHigh": "59.80",
+  "stockPriceLow": "47.69",
+  "volume": "98756"
+},{
+  "_id": {
+    "$oid": "62febd47c797142f6590d78b"
+  },
+  "companyCode": "TITI69",
+  "__v": 0,
+  "companyCEO": "Nithi",
+  "companyName": "TITI",
+  "companyWebSite": "titi.com",
+  "currentStockPrice": "80.78",
+  "date": {
+    "$date": {
+      "$numberLong": "1660861767357"
+    }
+  },
+  "emailId": "testuser5@gmail.com",
+  "marketcap": "67,890",
+  "stockExchange": "NSE",
+  "stockPriceHigh": "99.80",
+  "stockPriceLow": "67.87",
+  "volume": "6789"
 }]

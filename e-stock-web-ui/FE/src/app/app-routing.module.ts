@@ -10,8 +10,8 @@ const routes: Routes = [
   {path:'', component: LoginComponent},
   {path:'login', component: LoginComponent},
   {path:'signup', component: SignupComponent},
-  {path:'company', component: CompanyListComponent},
-  {path:'company/:id', component: CompanyListComponent},
+  {path:'company', component: CompanyListComponent, canActivate:[AuthGuard]},
+  {path:'company/:id', component: CompanyListComponent, canActivate:[AuthGuard]},
   {path:'company-add', component: CompanyAddComponent, canActivate:[AuthGuard]},
   {path:'company-add/:id', component: CompanyAddComponent, canActivate:[AuthGuard]},
   {path:'', redirectTo:'/', pathMatch: 'full'}

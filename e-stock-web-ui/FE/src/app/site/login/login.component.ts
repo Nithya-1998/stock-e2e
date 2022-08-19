@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, Input, OnInit, EventEmitter, Output  } from '@angular/core';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { UserService } from 'src/app/service/user-service/user.service';
+
 
 @Component({
   selector: 'app-login',
@@ -9,6 +10,8 @@ import { UserService } from 'src/app/service/user-service/user.service';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
+
+
   isLoginValid = true;
   "loginForm":FormGroup;
   "authSource": string;
@@ -39,6 +42,7 @@ export class LoginComponent implements OnInit {
       this.authSource = params['from'];
     });
   }
+
   onSubmit(loginForm: any) {
     console.log(loginForm.value.emailId);
     console.log(loginForm.value.password);
@@ -53,15 +57,20 @@ export class LoginComponent implements OnInit {
           }, 3000);
         } else {
           localStorage.setItem("jwtToken", data.token);
-          localStorage.setItem("name", data.emailId[0]);
+          localStorage.setItem("name", data.username);
           localStorage.setItem("loggedIn", "yes");
-          this.userAuthService.loggedIn = true;
+          this.userAuthService.setLoggedIn(true);
+          this.userAuthService.setUserToken(data);
+          this.userAuthService.setJwt(data.token);
           this.userAuthService.userToken = data;
           this.status = true;
           setTimeout(() => {
             this.status = false;
           }, 2000);
+          this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
           this.router.navigate(['/company']);
+        });
+
         }
       },
       error: (error) => {
@@ -85,4 +94,5 @@ export class LoginComponent implements OnInit {
   get password() {
     return this.loginForm.get('password');
   }
+
 }

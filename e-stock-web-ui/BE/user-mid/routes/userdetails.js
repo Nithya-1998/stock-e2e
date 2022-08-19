@@ -78,6 +78,7 @@ Router.post("/getUser", async (req, res, next) => {
                     password: req.body.password,
                     role: user.role,
                     token: token,
+                    username: user.firstName
                   });
               }
             );
@@ -216,7 +217,7 @@ Router.post("/addUser", async (req, res, next) => {
             password: req.body.password,
             role: req.body.role,
             isLoggedIn: req.body.isLoggedIn,
-            age: req.body.age,
+            age: req.body.age
           });
           post.save();
           res.send({ message: "User Details updated sucessfully..." });

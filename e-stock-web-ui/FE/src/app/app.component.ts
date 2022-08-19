@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, HostListener, Input, Output } from '@angular/core';
 
 import {
   trigger,
@@ -7,6 +7,7 @@ import {
   animate,
   transition
 } from '@angular/animations';
+import { UserService } from './service/user-service/user.service';
 
 @Component({
   selector: 'app-root',
@@ -41,6 +42,10 @@ export class AppComponent {
 
   menuState: string = 'out';
 
+  @HostListener('window:localStorage')
+  onStoreChange() {
+    console.log("Local storage", localStorage);
+  }
   toggleMenuOpen() {
     if(this.menuState == "out") {
       this.open = true;

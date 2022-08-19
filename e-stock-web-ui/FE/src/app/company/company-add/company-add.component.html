@@ -1,1 +1,476 @@
-<p>company-add works!</p>
+<form [formGroup]="editForm" (ngSubmit)="onSubmit(editForm)" *ngIf="!isAddForm">
+  <div class="container">
+    <div class="row justify-content-center mt-5">
+      <div class="col-sm-12 col-lg-7">
+        <div class="card mt-4 mb-5">
+          <div class="card-title h1 ml-4 mt-4">Company Details</div>
+          <div class="form-row mt-2 ml-4 mr-4">
+            <div class="form-group col-sm-12 col-md-6 col-lg-6">
+              <label for="companyName">
+                <span class="size">Company Name</span>
+              </label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="companyName"
+                id="companyName"
+                placeholder="companyName"
+                [value]="companyName"
+                readonly
+              />
+            </div>
+            <div class="form-group col-sm-12 col-md-6 col-lg-6">
+              <label for="companyCode">
+                <span class="size">Company Code</span>
+              </label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="companyCode"
+                id="companyCode"
+                placeholder="Company Code"
+                readonly
+              />
+            </div>
+            <div class="form-group col-sm-12 col-md-6 col-lg-6">
+              <label for="currentStockPrice">
+                <span class="size">Current Stock Price(Rs.)</span>
+              </label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="currentStockPrice"
+                id="currentStockPrice"
+                placeholder="Current Stock Price"
+                required
+              />
+              <div>
+                <small
+                  id="currentStockPrice"
+                  *ngIf="
+                    f['currentStockPrice'].invalid &&
+                    (f['currentStockPrice'].touched ||
+                      f['currentStockPrice'].dirty)
+                  "
+                  class="text-danger"
+                >
+                  Current Stock Price is required
+                </small>
+              </div>
+            </div>
+            <div class="form-group col-sm-12 col-md-6 col-lg-6">
+              <label for="stockExchange">Stock Exchange</label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="stockExchange"
+                id="stockExchange"
+                placeholder="Stock Exc: NSE/BSE"
+                required
+              />
+              <div>
+                <small
+                  id="stockExchange"
+                  *ngIf="
+                    f['stockExchange'].invalid &&
+                    (f['stockExchange'].touched || f['stockExchange'].dirty)
+                  "
+                  class="text-danger"
+                >
+                 Stock Exc required
+                </small>
+              </div>
+            </div>
+            <div class="form-group col-sm-12 col-md-6 col-lg-6">
+              <label for="stockPriceHigh">
+                <span class="size">Today's High(Rs.)</span>
+              </label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="stockPriceHigh"
+                id="stockPriceHigh"
+                placeholder="Stock Price High"
+                [value]="stockPriceHigh"
+                readonly
+              />
+            </div>
+            <div class="form-group col-sm-12 col-md-6 col-lg-6">
+              <label for="stockPriceLow">
+                <span class="size">Today's Low(Rs.)</span>
+              </label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="stockPriceLow"
+                id="stockPriceLow"
+                placeholder="Stock Price Low"
+                [value]="stockPriceLow"
+                readonly
+              />
+            </div>
+            <div class="form-group col-sm-12 col-md-6 col-lg-6">
+              <label for="emailId">Email Id</label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="emailId"
+                id="emailId"
+                placeholder="Email-Id Format:xyz@example.com"
+              />
+              <div>
+                <small
+                  id="emailId"
+                  *ngIf="
+                    f['emailId'].invalid &&
+                    (f['emailId'].touched || f['emailId'].dirty)
+                  "
+                  class="text-danger"
+                >
+                  EmailId is required
+
+                  <div *ngIf="f['emailId'].errors" class="text-danger">
+                    Check Email-Id Format
+                  </div>
+                </small>
+              </div>
+            </div>
+            <div class="form-group col-sm-12 col-md-6 col-lg-6">
+              <label for="volume">Volume</label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="volume"
+                id="volume"
+                placeholder="Company Volume"
+              />
+              <div>
+                <small
+                  id="volume"
+                  *ngIf="
+                    f['volume'].invalid &&
+                    (f['volume'].touched || f['volume'].dirty)
+                  "
+                  class="text-danger"
+                >
+                  Volume is required
+                </small>
+              </div>
+            </div>
+            <div class="form-group col-sm-12 col-md-6 col-lg-6">
+              <label for="marketcap">Market Cap(Cr.)</label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="marketcap"
+                id="marketcap"
+                placeholder="Market Captial"
+              />
+              <small
+                id="marketcap"
+                *ngIf="
+                  f['marketcap'].invalid &&
+                  (f['marketcap'].touched || f['marketcap'].dirty)
+                "
+              >
+                <div *ngIf="f['marketcap'].errors" class="text-danger">
+                  Market Capital is required
+                </div>
+              </small>
+            </div>
+            <div class="form-group col-sm-12 col-md-6 col-lg-6">
+              <label for="companyCEO">
+                <span class="size">CEO Name</span>
+              </label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="companyCEO"
+                id="companyCEO"
+                placeholder="Company CEO"
+              />
+              <div>
+                <small
+                  id="companyCEO"
+                  *ngIf="
+                    f['companyCEO'].invalid &&
+                    (f['companyCEO'].touched || f['companyCEO'].dirty)
+                  "
+                  class="text-danger"
+                >
+                  Company CEO is required
+                </small>
+              </div>
+            </div>
+            <div class="form-group col-sm-12 col-md-6 col-lg-6">
+              <label for="companyWebSite">Website</label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="companyWebSite"
+                id="companyWebSite"
+                placeholder="Company Website"
+              />
+            </div>
+          </div>
+          <div class="form-row mt-2 ml-4 mr-4">
+            <div class="form-group col-sm-12 col-md-6 col-lg-6">
+              <a>
+                <button type="submit"  [disabled]="editForm.invalid" class="btn btn-success font-weight-bold">
+                  <span class="text-light">Save</span>
+                </button>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+<form [formGroup]="editForm" (ngSubmit)="onSubmit(editForm)" *ngIf="isAddForm">
+  <div class="container">
+    <div class="row justify-content-center mt-5">
+      <div class="col-sm-12 col-lg-7">
+        <div class="card mt-4 mb-5">
+          <div class="card-title h1 ml-4 mt-4">Company Details</div>
+          <div class="form-row mt-2 ml-4 mr-4">
+            <div class="form-group col-sm-12 col-md-6 col-lg-6">
+              <label for="companyName">
+                <span class="size">Company Name</span>
+              </label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="companyName"
+                id="companyName"
+                placeholder="companyName"
+                [value]="companyName"
+                required
+              />
+              <div>
+                <small
+                  id="companyName"
+                  *ngIf="
+                    f['companyName'].invalid &&
+                    (f['companyName'].touched || f['companyName'].dirty)
+                  "
+                  class="text-danger"
+                >
+                  Company Name is required
+                </small>
+              </div>
+            </div>
+            <div class="form-group col-sm-12 col-md-6 col-lg-6">
+              <label for="companyCode">
+                <span class="size">Company Code</span>
+              </label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="companyCode"
+                id="companyCode"
+                placeholder="Company Code"
+              />
+              <div>
+                <small
+                  id="companyCode"
+                  *ngIf="
+                    f['companyCode'].invalid &&
+                    (f['companyCode'].touched || f['companyCode'].dirty)
+                  "
+                  class="text-danger"
+                >
+                  Company Code is required
+                </small>
+              </div>
+            </div>
+            <div class="form-group col-sm-12 col-md-6 col-lg-6">
+              <label for="currentStockPrice">
+                <span class="size">Current Stock Price(Rs.)</span>
+              </label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="currentStockPrice"
+                id="currentStockPrice"
+                placeholder="Current Stock Price"
+                required
+              />
+              <div>
+                <small
+                  id="currentStockPrice"
+                  *ngIf="
+                    f['currentStockPrice'].invalid &&
+                    (f['currentStockPrice'].touched ||
+                      f['currentStockPrice'].dirty)
+                  "
+                  class="text-danger"
+                >
+                  Current Stock Price is required
+                </small>
+              </div>
+            </div>
+            <div class="form-group col-sm-12 col-md-6 col-lg-6">
+              <label for="stockExchange">Stock Exchange</label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="stockExchange"
+                id="stockExchange"
+                placeholder="Stock Exc: NSE/BSE"
+                [value]="stockExchange"
+                required
+              />
+              <div>
+                <small
+                  id="stockExchange"
+                  *ngIf="
+                    f['stockExchange'].invalid &&
+                    (f['stockExchange'].touched || f['stockExchange'].dirty)
+                  "
+                  class="text-danger"
+                >
+                Stock Exc required
+                </small>
+              </div>
+            </div>
+            <div class="form-group col-sm-12 col-md-6 col-lg-6">
+              <label for="stockPriceHigh">
+                <span class="size">Today's High(Rs.)</span>
+              </label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="stockPriceHigh"
+                id="stockPriceHigh"
+                placeholder="Stock Price High"
+                [value]="stockPriceHigh"
+              />
+            </div>
+            <div class="form-group col-sm-12 col-md-6 col-lg-6">
+              <label for="stockPriceLow">
+                <span class="size">Today's Low(Rs.)</span>
+              </label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="stockPriceLow"
+                id="stockPriceLow"
+                placeholder="Stock Price Low"
+                [value]="stockPriceLow"
+              />
+            </div>
+            <div class="form-group col-sm-12 col-md-6 col-lg-6">
+              <label for="emailId">Email Id</label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="emailId"
+                id="emailId"
+                placeholder="Email-Id Format:xyz@example.com"
+              />
+              <div>
+                <small
+                  id="emailId"
+                  *ngIf="
+                    f['emailId'].invalid &&
+                    (f['emailId'].touched || f['emailId'].dirty)
+                  "
+                  class="text-danger"
+                >
+                  EmailId is required
+                </small>
+              </div>
+            </div>
+            <div class="form-group col-sm-12 col-md-6 col-lg-6">
+              <label for="volume">Volume</label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="volume"
+                id="volume"
+                placeholder="Company Volume"
+              />
+              <div>
+                <small
+                  id="volume"
+                  *ngIf="
+                    f['volume'].invalid &&
+                    (f['volume'].touched || f['volume'].dirty)
+                  "
+                  class="text-danger"
+                >
+                  Volume is required
+                </small>
+              </div>
+            </div>
+            <div class="form-group col-sm-12 col-md-6 col-lg-6">
+              <label for="marketcap">Market Cap(Cr.)</label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="marketcap"
+                id="marketcap"
+                placeholder="Market Captial"
+              />
+              <small
+                id="marketcap"
+                *ngIf="
+                  f['marketcap'].invalid &&
+                  (f['marketcap'].touched || f['marketcap'].dirty)
+                "
+              >
+                <div *ngIf="f['marketcap'].errors" class="text-danger">
+                  Market Capital is required
+                </div>
+              </small>
+            </div>
+            <div class="form-group col-sm-12 col-md-6 col-lg-6">
+              <label for="companyCEO">
+                <span class="size">CEO Name</span>
+              </label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="companyCEO"
+                id="companyCEO"
+                placeholder="Company CEO"
+              />
+              <div>
+                <small
+                  id="companyCEO"
+                  *ngIf="
+                    f['companyCEO'].invalid &&
+                    (f['companyCEO'].touched || f['companyCEO'].dirty)
+                  "
+                  class="text-danger"
+                >
+                  Company CEO is required
+                </small>
+              </div>
+            </div>
+            <div class="form-group col-sm-12 col-md-6 col-lg-6">
+              <label for="companyWebSite">Website</label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="companyWebSite"
+                id="companyWebSite"
+                placeholder="Company Website"
+              />
+            </div>
+          </div>
+          <div class="form-row mt-2 ml-4 mr-4">
+            <div class="form-group col-sm-12 col-md-6 col-lg-6">
+              <a>
+                <button type="submit" [disabled]="editForm.invalid"  class="btn btn-success font-weight-bold">
+                  <span class="text-light">Save</span>
+                </button>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

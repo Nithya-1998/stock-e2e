@@ -1,15 +1,12 @@
 export interface User{
-    id:number;
-    name:string;
-    model:string;
-    number:string;
-    yearOfManufacture:Date;
-    insuranceRenewalDate:Date;
-    lastServiceDate:Date;
-    nextServiceDate:Date;
-    seater:number;
-    vehicleType:string;
-    imageUrl:string;
-    mileage:number;
-    rent:number;
+    id?:any;
+    firstName:string;
+    lastName:string;
+    password?: string;
+    role?:string;
+    age: number;
+    phoneNumber: number;
+    emailId: string;
+    dateOfBirth: string;
+    isLoggedIn?: boolean
 }

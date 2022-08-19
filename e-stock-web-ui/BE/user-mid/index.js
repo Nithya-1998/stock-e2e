@@ -29,7 +29,7 @@ app.get('/', (req, res) => {
     res.json({ status: "I'm alive!" });
 })
  /**
-   * @openapi
+   * /
    * /healthcheck:
    *  get:
    *     tags:

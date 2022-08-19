@@ -9,10 +9,11 @@ import { UserService } from 'src/app/service/user-service/user.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  @Input() 'isLoginValid': boolean;
-  @Output() 'username': EventEmitter<any> = new EventEmitter<any>();
+
+  @HostListener('window:localStorage')
+  @Input() 'username': any = localStorage.getItem("name");
   status = false;
-  name = "Please";
+  'name': string = "Please";
   menuState = "in";
   constructor( private userAuthService: UserService,
     private el:ElementRef, private renderer:Renderer2,
@@ -20,22 +21,21 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     if(localStorage.getItem("loggedIn") == "yes" || this.userAuthService.getLoggedIn()) {
+      console.log( this.userAuthService.getLoggedIn());
       this.status = true;
+    } else {
+      this.status = false;
     }
-  }
-  setUserName(username : any){
-    this.isLoginValid = username;
-    this.status = true;
   }
 
   onLogOut() {
     this.status = false;
     localStorage.setItem("loggedIn", "no");
     localStorage.removeItem("name");
-    localStorage.clear();
     this.userAuthService.loggedIn=false;
     this.userAuthService.logout();
     this.router.navigate(['/login']);
   }
+
 
 }

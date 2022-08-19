@@ -6,7 +6,7 @@
   "lastName": "T",
   "emailId": "testuser@gmail.com",
   "phoneNumber": "7094823457",
-  "dateOfBirth": "06/01/1998",
+  "dateOfBirth": "1998-01-06",
   "password": "Test@123",
   "role": "ADMIN",
   "isLoggedIn": true,
@@ -20,7 +20,35 @@
   "lastName": "G",
   "emailId": "testuser2@gmail.com",
   "phoneNumber": "7094023457",
-  "dateOfBirth": "14/07/1997",
+  "dateOfBirth": "1997-07-14",
+  "password": "Test@123",
+  "role": "USER",
+  "isLoggedIn": true,
+  "age": 24,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "62e704c48741e2fa1bf095ff"
+  },
+  "firstName": "Nithya",
+  "lastName": "T",
+  "emailId": "testuser3@gmail.com",
+  "phoneNumber": "7094812321",
+  "dateOfBirth": "1998-01-06",
+  "password": "Test@123",
+  "role": "USER",
+  "isLoggedIn": true,
+  "age": 24,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "62febcec79b8b9697b6eaafa"
+  },
+  "firstName": "Nithya",
+  "lastName": "Thulasi",
+  "emailId": "testuser5@gmail.com",
+  "phoneNumber": "7094812321",
+  "dateOfBirth": "1999-09-08",
   "password": "Test@123",
   "role": "USER",
   "isLoggedIn": true,

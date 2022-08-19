@@ -1,1 +1,272 @@
-<p>signup works!</p>
+<!-- <p>
+    signup works!
+</p> -->
+
+<form [formGroup]="signupForm" (ngSubmit)="onSignup(signupForm)">
+  <div class="container">
+    <div class="row justify-content-center mt-5">
+      <div class="col-sm-12 col-lg-7">
+        <div class="card mt-4 mb-5">
+          <div class="card-title h1 ml-4 mt-4">Register</div>
+          <ul class="nav nav-tabs nav-fill nav-justified mb-3" role="tablist">
+            <li class="nav-item">
+              <a
+                class="nav-link bg-dark text-light"
+                data-toggle="pill"
+                href="#"
+                role="tab"
+                aria-controls="pills-user"
+                aria-selected="true"
+                (click)="addRoleUser()"
+                >User
+              </a>
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link bg-light text-dark"
+                data-toggle="pill"
+                href="#"
+                role="tab"
+                aria-controls="pills-admin"
+                aria-selected="false"
+                (click)="addRoleAdmin()"
+                >Admin
+              </a>
+            </li>
+          </ul>
+          <div
+            class="alert alert-info mt-2 ml-4 mr-4"
+            *ngIf="isExist()"
+            role="alert"
+          >
+            User Already Exist. Please do login.
+          </div>
+          <div class="form-row mt-2 ml-4 mr-4">
+            <div class="form-group col-sm-12 col-md-6 col-lg-6">
+              <label for="firstName">
+                <span class="size">First Name</span>
+              </label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="firstName"
+                id="firstName"
+                placeholder="Enter First Name"
+                required
+              />
+              <div>
+                <small
+                  id="firstName"
+                  *ngIf="
+                    f['firstName'].invalid &&
+                    (f['firstName'].touched || f['firstName'].dirty)
+                  "
+                  class="text-danger"
+                >
+                  First Name is required
+
+                  <div *ngIf="f['firstName'].errors" class="text-danger">
+                    <div>Name must be at least 3 to 20 characters long</div>
+                    <div>First name should not contain numbers or symbols</div>
+                  </div>
+                </small>
+              </div>
+            </div>
+            <div class="form-group col-sm-12 col-md-6 col-lg-6">
+              <label for="lastName">
+                <span class="size">Last Name</span>
+              </label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="lastName"
+                id="lastName"
+                placeholder="Enter Last Name"
+              />
+              <div>
+                <small
+                  id="lastName"
+                  *ngIf="
+                    f['lastName'].invalid &&
+                    (f['lastName'].touched || f['lastName'].dirty)
+                  "
+                  class="text-danger"
+                >
+                  Last Name is required
+
+                  <div *ngIf="f['lastName'].errors" class="text-danger">
+                    <div>Name must be at least 1 characters long</div>
+                    <div>Last name should not contain numbers or symbols</div>
+                  </div>
+                </small>
+              </div>
+            </div>
+            <div class="form-group col-sm-12 col-md-6 col-lg-6">
+              <label for="phoneNumber">
+                <span class="size">Contact No.</span>
+              </label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="phoneNumber"
+                id="phoneNumber"
+                placeholder="Enter Contact No."
+                required
+              />
+              <div>
+                <small
+                  id="phoneNumber"
+                  *ngIf="
+                    f['phoneNumber'].invalid &&
+                    (f['phoneNumber'].touched || f['phoneNumber'].dirty)
+                  "
+                  class="text-danger"
+                >
+                  Contact Number is required
+                  <div *ngIf="f['phoneNumber'].errors" class="text-danger">
+                    Should not contain alphabets
+                  </div>
+                </small>
+              </div>
+            </div>
+            <div class="form-group col-sm-12 col-md-6 col-lg-6">
+              <label for="age">
+                <span class="size">Age</span>
+              </label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="age"
+                id="age"
+                placeholder="Enter age"
+              />
+              <div>
+                <small
+                  id="age"
+                  *ngIf="
+                    f['age'].invalid && (f['age'].touched || f['age'].dirty)
+                  "
+                  class="text-danger"
+                >
+                  <div>Age is required</div>
+                  <div *ngIf="f['age'].errors" class="text-danger">
+                    <div>It should not contain letters</div>
+                  </div>
+                </small>
+              </div>
+            </div>
+            <div class="form-group col-sm-12 col-md-6 col-lg-6">
+              <label for="emailId">
+                <span class="size">Email Id</span>
+              </label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="emailId"
+                id="emailId"
+                placeholder="Email-Id Format:xyz@example.com"
+              />
+              <div>
+                <small
+                  id="emailId"
+                  *ngIf="
+                    f['emailId'].invalid &&
+                    (f['emailId'].touched || f['emailId'].dirty)
+                  "
+                  class="text-danger"
+                >
+                  Email-Id is required
+
+                  <div *ngIf="f['emailId'].errors" class="text-danger">
+                    Check Email-Id Format
+                  </div>
+                </small>
+              </div>
+            </div>
+            <div class="form-group col-sm-12 col-md-6 col-lg-6">
+              <label for="password">Password</label>
+              <input
+                type="password"
+                class="form-control"
+                formControlName="password"
+                id="password"
+                placeholder="Enter Password"
+              />
+              <div>
+                <small
+                  id="password"
+                  *ngIf="
+                    f['password'].invalid &&
+                    (f['password'].touched || f['password'].dirty)
+                  "
+                  class="text-danger"
+                >
+                  Password is required
+
+                  <div *ngIf="f['password'].errors" class="text-danger">
+                    <div>
+                      It must have At least 8 characters in length <br />
+                      It must have atleast one lower-case letter <br />
+                      It must have atleast one upper-case letter<br />
+                      It must have numbers and special characters
+                    </div>
+                  </div>
+                </small>
+              </div>
+            </div>
+            <div class="form-group col-sm-12 col-md-6 col-lg-6">
+              <label for="confirmPassword">Confirm Password</label>
+              <input
+                type="password"
+                class="form-control"
+                formControlName="confirmPassword"
+                id="confirmPassword"
+                placeholder="Enter Confirm Password"
+              />
+              <small
+                id="confirmPassword"
+                *ngIf="
+                  f['confirmPassword'].invalid &&
+                  (f['confirmPassword'].touched || f['confirmPassword'].dirty)
+                "
+              >
+                <div *ngIf="f['confirmPassword'].errors" class="text-danger">
+                  Confirm Password is required
+                </div>
+              </small>
+              <div>
+                <small
+                  class="text-danger"
+                  id="confirmPassword"
+                  *ngIf="signupForm.value.confirmPassword != signupForm.value.password "
+                >
+                  Password should match
+                </small>
+              </div>
+            </div>
+            <div class="form-group col-sm-12 col-md-6 col-lg-6">
+              <label for="dateOfBirth">Date Of Birth</label>
+              <input
+                type="date"
+                class="form-control"
+                formControlName="dateOfBirth"
+                [min]="presentDate | date: 'dd-MM-yyyy'"
+                id="dateOfBirth"
+                placeholder="dd/MM/yyyy"
+              />
+            </div>
+          </div>
+          <div class="form-row mt-2 ml-4 mr-4">
+            <div class="form-group col-sm-12 col-md-6 col-lg-6">
+              <a>
+                <button type="submit" class="btn btn-danger font-weight-bold">
+                  <span class="text-light">Signup</span>
+                </button>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

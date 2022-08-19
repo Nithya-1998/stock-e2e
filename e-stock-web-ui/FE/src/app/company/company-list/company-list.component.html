@@ -1,1 +1,102 @@
-<p>company-list works!</p>
+<!--The content below is only a placeholder and can be replaced.-->
+<div class="container-fluid">
+  <div>
+    <!-- Default checked -->
+    <div class="custom-control custom-switch">
+      <input
+        type="checkbox"
+        class="custom-control-input"
+        id="cardViewToggle"
+        (click)="toggleView($event)"
+        checked
+      />
+      <label class="custom-control-label" for="cardViewToggle"
+        ><small>Card view</small></label
+      >
+      <button
+        type="button"
+        class="btn btn-dark float-right mt-1 ml-1 mr-1"
+        (click)="exportExcel()"
+      >
+        <small class="font-weight-bold"
+          >Export<i class="material-icons file-size">file_download</i></small
+        >
+      </button>
+      <a [routerLink]="['/company-add']">
+        <button
+          type="button"
+          class="btn btn-secondary mt-1 ml-1 mr-1 float-right"
+        >
+          <span
+            ><small class="text-light font-weight-bold"
+              >Add Company</small
+            ></span
+          >
+        </button>
+      </a>
+    </div>
+    <h4 class="text-info mt-3">Companies</h4>
+    <div
+      class="alert alert-success mt-2 ml-4 mr-4 alert-download-size"
+      role="alert"
+      *ngIf="downloaded"
+    >
+      Downloaded Successfully...
+    </div>
+    <div class="row" *ngIf="cardView">
+      <div
+        class="col-sm-12 col-md-6 col-lg-3"
+        *ngFor="let company of companyList"
+      >
+        <app-company-info
+          [company]="company"
+          [companyId]="companyId"
+          (removeCompany)="removeCompanyFromList($event)"
+        >
+        </app-company-info>
+      </div>
+    </div>
+    <div *ngIf="!cardView">
+      <div class="row">
+        <table class="table table-responsive table-stripped table-white">
+          <thead>
+            <tr>
+              <th>Code</th>
+              <th>Company</th>
+              <th>Stock Exc</th>
+              <th>Stock Price(Rs.)</th>
+              <th>Volume</th>
+              <th>
+                Today's<i class="material-icons text-success">arrow_upward</i>
+              </th>
+              <th>
+                Today's<i class="material-icons text-danger">arrow_downward</i>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              *ngFor="
+                let company of companyList
+                  | paginate: { itemsPerPage: count, currentPage: p }
+              "
+            >
+              <td>{{ company.companyCode }}</td>
+              <td>{{ company.companyName }}</td>
+              <td>{{ company.stockExchange }}</td>
+              <td>{{ company.currentStockPrice }}</td>
+              <td>{{ company.volume }}</td>
+              <td>{{ company.stockPriceHigh }}</td>
+              <td>{{ company.stockPriceLow }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!--Including the pagination control.-->
+    <div class="text-right" *ngIf="!cardView">
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </div>
+  </div>
+</div>

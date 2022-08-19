@@ -16,7 +16,14 @@
   transform:scale(1.2);
 } */
 
-html, body { height: 100%; }
+.alert-download-size{
+  width:40%;
+}
+
+html, body {
+  height: 100%;
+}
+
 /* body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; padding: 30px; }
 
 .example-container {

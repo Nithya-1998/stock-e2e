@@ -1,1 +1,225 @@
-<p>company-info works!</p>
+<div class="card mb-4">
+  <!-- <img src={{company.}} alt="Vehicles" class="card-image-top" height=300> -->
+  <div class="card-body">
+    <div class="card-title font-weight-bold">
+      <div class="d-flex">
+        <div class="flex-shrink-1">{{ company.companyCode }}</div>
+        <div class="flex-grow-1">
+          <div class="text-danger font-weight-bold text-right">
+            {{ company.stockExchange }}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-subtitle mb-2 text-muted">
+      <div class="d-flex">
+        <div class="flex-shrink-1">{{ company.companyName }}</div>
+        <div class="flex-grow-1">
+          <div class="text-dark font-weight-bold text-right">
+            &#8377;{{ company.marketcap }} Cr
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-text mt-2">
+      <div class="card-subtitle mb-2 text-muted">
+        <div class="d-flex">
+          <div class="flex-shrink-1">Current Price</div>
+          <div class="flex-grow-1">
+            <div class="text-dark font-weight-bold text-right">
+              &#8377;{{ company.currentStockPrice }}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-subtitle mb-2 text-muted">
+        <div class="d-flex">
+          <div class="flex-shrink-1">Volume</div>
+          <div class="flex-grow-1">
+            <div class="text-dark font-weight-bold text-right">
+              {{ company.volume }}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-subtitle mb-2 text-muted">
+        <div class="d-flex">
+          <div class="flex-shrink-1">
+            <i class="material-icons text-success">arrow_circle_up</i
+            >{{ company.stockPriceHigh }}
+          </div>
+          <div class="flex-grow-1">
+            <div class="text-dark font-weight-bold text-right">
+              <i class="material-icons text-danger">arrow_circle_down</i
+              >{{ company.stockPriceLow }}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-subtitle mb-2 text-muted">
+        <div class="d-flex">
+          <div class="flex-shrink-1">CEO</div>
+          <div class="flex-grow-1">
+            <div class="text-dark font-weight-bold text-right">
+              {{ company.companyCEO }}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-subtitle mb-2 text-muted">
+        <div class="d-flex">
+          <div class="flex-shrink-1">Visit:</div>
+          <div class="flex-grow-1">
+            <div class="text-right text-info" role="button">
+              <a [routerLink]="" (click)="opneLink(company.companyWebSite)">{{
+                company.companyWebSite
+              }}</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-subtitle mb-2 text-muted">
+        <div class="d-flex">
+          <div class="flex-shrink-1">
+            <button
+              type="button"
+              class="btn btn-dark"
+              *ngIf="name === company.emailId && name !== null"
+              (click)="onEditCompany(company.companyCode)"
+            >
+              <b>Edit</b>
+            </button>
+            <button
+              type="button"
+              class="btn btn-dark"
+              *ngIf="name !== company.emailId || name === null"
+              (click)="sellStocks(company.companyCode)"
+            >
+              <b>Buy</b>
+            </button>
+          </div>
+          <div class="flex-grow-1">
+            <button
+              type="button"
+              class="btn btn-light float-right"
+              *ngIf="name === company.emailId && name !== null"
+              (click)="onRemovingCompany(company.companyCode)"
+            >
+              <b class="text-danger">Delete</b>
+            </button>
+            <button
+              type="button"
+              class="btn btn-light float-right"
+              *ngIf="name !== company.emailId || name === null"
+              (click)="sellStocks(company.companyCode)"
+            >
+              <b class="text-danger">Sell</b>
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- <ul
+        class="nav nav-tabs nav-fill nav-justified mb-3"
+        role="tablist"
+        *ngIf="name === company.emailId && name !== null"
+      >
+        <li class="nav-item">
+          <a
+            class="nav-link bg-dark font-weight-bold text-light"
+            data-toggle="pill"
+            href="#"
+            role="tab"
+            aria-controls="pills-user"
+            aria-selected="true"
+            [routerLink]="['/company', company.companyCode]"
+          >
+            <i class="material-icons text-light">create</i>
+            Edit
+          </a>
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link bg-light font-weight-bold text-danger"
+            (click)="onRemovingCompany(company.companyCode)"
+            data-toggle="pill"
+            href="#"
+            role="tab"
+            aria-controls="pills-admin"
+            aria-selected="false"
+          >
+            <i class="material-icons text-danger">delete</i>
+            Delete
+          </a>
+        </li>
+      </ul> -->
+    </div>
+    <div class="alert alert-danger" role="alert" *ngIf="message !== ''">
+      <small>{{ message }}</small>
+    </div>
+  </div>
+</div>
+
+<!-- <button
+  style="margin: 50px; padding: 10px"
+  type="button"
+  class="btn btn-primary"
+  (click)="openPopup()">Show Data
+</button>
+<div
+  class="modal"
+  tabindex="-1"
+  role="dialog"
+  [ngStyle]="{ display: displayStyle }"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">GeeksForGeeks</h4>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="companyForm" (ngSubmit)="saveDetails(companyForm)">
+          <div class="container">
+            <div class="row justify-content-center">
+              <div class="col-sm-12 col-lg-7">
+                <div class="card mt-4 mb-5">
+                  <div class="card-title h1 ml-4 mt-4">Edit Details</div>
+                  <div class="form-row mt-2 ml-4 mr-4">
+                    <div class="form-group col-sm-12 col-md-12 col-lg-12">
+                      <label for="currentStockPrice">
+                        <span>Current Stock Price (Rs.)</span>
+                      </label>
+                      <input type="text" formControlName="emailId" class="form-control" id="emailId"
+                       placeholder="Enter emailId"
+                      >
+                      <small id="emailId" *ngIf="((f['emailId'].errors) && (f['emailId'].touched || f['emailId'].dirty))">
+                        <div *ngIf="(f['emailId'].errors['required'])" class="form-text text-danger">EmailId is required</div>
+                        <div *ngIf="(f['emailId'].errors['email'])" class="form-text text-danger">EmailId should be valid
+                        </div>
+                      </small>
+                    </div>
+                    <div class="form-group col-sm-12 col-md-12 col-lg-12">
+                      <label for="password">Password</label>
+                      <input type="password" formControlName="password" class="form-control" id="password"
+                        placeholder="Enter Password">
+                      <small id="password" *ngIf="f['password'].errors && (f['password'].touched || f['password'].dirty)">
+                        <div *ngIf="(f['password'].errors['required'])" class="form-text text-danger">Password is required</div>
+                      </small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" (click)="saveDetails(company)">
+          Save
+        </button>
+        <button type="button" class="btn btn-danger" (click)="closePopup()">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div> -->
